@@ -43,5 +43,8 @@ export default [
       ],
       'no-console': 'off'
     }
+  },
+  {
+    ignores: ["dist/**", "build/**"]
   }
 ];
