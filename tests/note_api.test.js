@@ -7,6 +7,7 @@ const api = supertest(app)
 
 const helper = require('./test_helper')
 
+const User = require('../models/user')
 const Note = require('../models/note')
 
 describe('when there is initially some notes saved', () => {
@@ -71,7 +72,7 @@ describe('when there is initially some notes saved', () => {
     test('succeeds with valid data', async () => {
       const newNote = {
         content: 'async/await simplifies making async calls',
-        important: true,
+        important: true
       }
 
       await api
@@ -123,5 +124,6 @@ describe('when there is initially some notes saved', () => {
 })
 
 after(async () => {
+  await User.deleteMany({})
   await mongoose.connection.close()
 })
